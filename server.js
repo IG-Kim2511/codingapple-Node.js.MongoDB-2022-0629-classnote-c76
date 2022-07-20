@@ -612,8 +612,25 @@ function ig_middleware(req,res,next) {
 }
 
 
+// 🦄🦄c76 Google Cloud(=AWS, 네이버클라우드, cafe24) 사이트배포, app.yaml
+// 👉app.yaml
+
+/* 
+  🍀2. server.js에 서버를 띄울 때 포트가 8080인지 확인합니다.
+   
+  app.listen 이 부분이 8080인지 확인합시다. 
+  app.listen(8080, function() {
+      console.log('listening on 8080')
+    }) 
+  아니라면 8080으로 변경해줍시다.
+  왜냐면 구글클라우드에서 기본적으로 이용하는 포트가 8080입니다. 
+  8080쓰기 싫으시면 따로 설정해주시면 되는데 귀찮으니 8080으로 맞춥니다.  
 
 
+  🍀gcloud init
+
+  🍀gcloud app deploy
+*/
 
 
 
