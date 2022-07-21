@@ -683,10 +683,10 @@ const upload = multer({ storage: storage })
 */
 
 /* 
-  🍉미들웨어 const upload : upload.single('ig_프로필')
-  🍉./views/upload.ejs의  <input type="file" name="ig_프로필"> 의 name="ig_프로필"가져옴
+  🍉미들웨어 const upload : upload.single('ig_uploadInput')
+  🍉./views/upload.ejs의  <input type="file" name="ig_uploadInput"> 의 name="ig_uploadInput"가져옴
 */
-app.post('/upload',upload.single('ig_프로필'),(req요청,res응답)=>{
+app.post('/upload',upload.single('ig_uploadInput'),(req요청,res응답)=>{
   res응답.send('c78_fin');
 });
 
