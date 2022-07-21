@@ -664,10 +664,17 @@ const storage = multer.diskStorage({
   // 🍉file name 설정 : file.originalname
   filename: function (req, file, cb) {
 
-    //     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    // cb(null, file.originalname + '-' + uniqueSuffix)
 
+    /* 🍉파일명 추가로 넣기      
+      a) 
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, file.originalname + '-' + uniqueSuffix)    
+
+      b) 
+      cb(null, file.originalname + '날짜:' + new Date())    
+    */
     cb(null, file.originalname)
+    
   }
 })
 
