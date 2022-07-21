@@ -683,18 +683,21 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
 
-  // 🍉fileFilter : PNG, JPG만 업로드하기
-  fileFilter: function (req, file, callback) {
-      var ext = path.extname(file.originalname);
-      if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
-          return callback(new Error('PNG, JPG만 업로드하세요'))
-      }
-      callback(null, true)
-  },
-  // 🍉limits : 파일사이즈 제한
-  limits:{
-      fileSize: 1024 * 1024
-  }
+  /* 
+    // 🍉fileFilter : PNG, JPG만 업로드하기
+    fileFilter: function (req, file, callback) {
+        var ext = path.extname(file.originalname);
+        if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+            return callback(new Error('PNG, JPG만 업로드하세요'))
+        }
+        callback(null, true)
+    },
+
+    // 🍉limits : 파일사이즈 제한
+    limits:{
+        fileSize: 1024 * 1024
+    }
+   */
 });
 
 
@@ -714,17 +717,26 @@ app.post('/upload',upload.single('ig_uploadInput'),(req요청,res응답)=>{
 });
 
 /* 
-  🍀-40 API만들기
+  🍀-40 API만들기 (업로드한 이미지... API로 만들기)
 
-  업로드한 이미지... API로 만들기
+  🍉URL파라미터 
+  
+    a) 이름짓기👉 :ig_imageName
 
-  URL파라미터
+      적용 👉 req요청.params.ig_imageName
 
+
+    b) 파일경로 : __dirname +'/public_c50/image_c78'
+
+
+    c) html에 img태그에 적용하기 (파일명 :   test_c78.jpg)
+    👉upload_c78.ejs
+     <img src="/public_c50/image_c78/test_c78.jpg" alt="">
 */
 
-// app.get('/image_c78/:ig_imageName',(req요청,res응답)=>{
-//   res응답.sendFile(__dirname +'/public_c50/image_c78'+ req요청.params.ig_imageName)
-// })
+app.get('/image_c78/:ig_imageName',(req요청,res응답)=>{
+  res응답.sendFile(__dirname +'/public_c50/image_c78'+ req요청.params.ig_imageName)
+})
 
 
 
