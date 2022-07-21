@@ -22,20 +22,7 @@
     <h4>upload page</h4>
 
     <!-- 🥒🦄c78  -->
-    <!--
-        upload.ejs에서 post요청오면
-
-        ./public/image폴더안에 저장함
-
-
-
-        diskStorage : 컴퓨터 하드안에 저장
-
-        memoryStorage : 램안에 저장. 휘발성..저장
-     -->
-
      <!-- 
-
         🍀10) enctype
 
             1)인코딩 안함 - 일반적인 전송방법
@@ -45,9 +32,13 @@
             enctype="application/x-www-form-urlencoded"
       -->
 
-      <!-- enctype -->
+      <!-- 🍉 enctype="multipart/form-data" -->
     <form action="/upload" method="POST" enctype="multipart/form-data" >
-        <input type="file" name="ig_profile">
+
+        <!-- 🍉 name="ig_프로필"-->
+        <input type="file" name="ig_프로필">
+
+        <!-- 🍉type="submit" -->
         <button type="submit" class="myBtn">submit</button>
     </form>
    </div>
@@ -55,7 +46,7 @@
 
 
 
-   
+
        <!-- [jquery] -->
        <script
        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

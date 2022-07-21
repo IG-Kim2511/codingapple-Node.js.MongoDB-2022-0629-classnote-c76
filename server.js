@@ -635,16 +635,60 @@ function ig_middleware(req,res,next) {
 // 🦄🦄c78 이미지 업로드 & api만들기, enctype="", multer, upload.array(~,~)
 // 👉views/upload_c78.ejs
 
+
+/* 
+  🍀-10) upload.ejs 만듬 : 👉views/upload_c78.ejs
+*/
+
 app.get('/upload',(req요청,res응답)=>{
   res응답.render('upload_c78.ejs');
 });
 
+/* 
+  🍀-20_
+      npm install multer
+
+      diskStorage : 컴퓨터 하드안에 저장
+      memoryStorage : 램안에 저장. 휘발성..저장
+*/
+const multer = require('multer')
+
+// 🍉diskStorage
+const storage = multer.diskStorage({
+
+  // 🍉경로 : './public_c50/image_c78'
+  destination: function (req, file, cb) {
+    cb(null, './public_c50/image_c78')
+  },
+
+  // 🍉file name 설정 : file.originalname
+  filename: function (req, file, cb) {
+
+    //     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+    // cb(null, file.originalname + '-' + uniqueSuffix)
+
+    cb(null, file.originalname)
+  }
+})
+
+// 🍉모든설정...const upload에 저장함. const multer , const storage 가져옴
+const upload = multer({ storage: storage })
 
 
+/* 
+  🍀-30
+      upload.ejs에서 post요청오면
 
+      ./public/image폴더안에 저장함
+*/
 
-
-
+/* 
+  🍉미들웨어 const upload : upload.single('ig_프로필')
+  🍉./views/upload.ejs의  <input type="file" name="ig_프로필"> 의 name="ig_프로필"가져옴
+*/
+app.post('/upload',upload.single('ig_프로필'),(req요청,res응답)=>{
+  res응답.send('c78_fin');
+});
 
 
 
