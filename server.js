@@ -739,7 +739,16 @@ app.get('/image_c78/:ig_imageName',(req요청,res응답)=>{
 })
 
 
+// 🦄🦄80 라이브러리 소개 helmet.js , Mongoose, Connect-mongo, OAuth소셜로그인
+/* 
+  보안 : helmet.js 라이브러리 
+  ex) express사용하고있다는 정보...숨겨줄 필요가 있음
 
+  Mongoose : mongodb 데이터저장할때 검사도와줌
+
+  OAuth소셜로그인 
+  Connect-mongo : 세션데이터..db저장  ...사용하면 속도 안느려지고 좋음
+ */
 
 
 
