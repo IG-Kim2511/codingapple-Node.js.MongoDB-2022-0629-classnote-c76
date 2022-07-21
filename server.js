@@ -632,7 +632,12 @@ function ig_middleware(req,res,next) {
   🍀gcloud app deploy
 */
 
+// 🦄🦄c78 이미지 업로드 & api만들기, enctype="", multer, upload.array(~,~)
+// 👉views/upload_c78.ejs
 
+app.get('/upload',(req요청,res응답)=>{
+  res응답.render('upload_c78.ejs');
+});
 
 
 
