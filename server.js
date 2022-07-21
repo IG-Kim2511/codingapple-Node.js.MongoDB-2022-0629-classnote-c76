@@ -678,8 +678,24 @@ const storage = multer.diskStorage({
   }
 })
 
-// 🍉모든설정...const upload에 저장함. const multer , const storage 가져옴
-const upload = multer({ storage: storage })
+// 🍉const upload : 모든설정...const upload에 저장함. const multer , const storage 가져옴
+
+const upload = multer({
+  storage: storage,
+
+  // 🍉fileFilter : PNG, JPG만 업로드하기
+  fileFilter: function (req, file, callback) {
+      var ext = path.extname(file.originalname);
+      if(ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+          return callback(new Error('PNG, JPG만 업로드하세요'))
+      }
+      callback(null, true)
+  },
+  // 🍉limits : 파일사이즈 제한
+  limits:{
+      fileSize: 1024 * 1024
+  }
+});
 
 
 /* 
@@ -697,6 +713,18 @@ app.post('/upload',upload.single('ig_uploadInput'),(req요청,res응답)=>{
   res응답.send('c78_fin');
 });
 
+/* 
+  🍀-40 API만들기
+
+  업로드한 이미지... API로 만들기
+
+  URL파라미터
+
+*/
+
+// app.get('/image_c78/:ig_imageName',(req요청,res응답)=>{
+//   res응답.sendFile(__dirname +'/public_c50/image_c78'+ req요청.params.ig_imageName)
+// })
 
 
 
